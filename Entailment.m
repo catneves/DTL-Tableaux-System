@@ -23,11 +23,17 @@ Construct=Function[{t,path,ident},
 				If[EventQ[t,path[[st]],ident[[i]]],
 					AppendTo[lambda[[i]],path[[st]]];(*Add i to lambda;*)
 					AppendTo[xi[[i]],st];(*Refresh the xi i;*)
-					v=Valuation[t,v,xi[[i]],path[[st]],i](*Refresh the vi;*)
+					v=Valuation[t,v,xi[[i]],path[[st]],i](*Refresh the vi;*);
 				];
 				i++;
 			];
 			st++;
+		];
+(*Adjust the size of v*)
+		i=1;
+		While[i<=Length[ident],
+			v[[i]]=Drop[v[[i]],Length[xi[[i]]]-Length[v[[i]]]];
+			i++
 		];
 		mu={lambda,v};
 		{mu,xi}
