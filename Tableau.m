@@ -241,8 +241,8 @@ Rules[t_]:=(
 			STpos[state,"GlobalConjunction",False]!=0,
 				(
 				Q2=Apply[GlobalAndMinus,Flatten[{state,STSubParts[state,"GlobalConjunction",False]}]];
-				ApplyRule[t,Q2[[1]],Superscript["\[And]","+"]];
-				ApplyRule[t,Q2[[2]],Superscript["\[And]","+"]];
+				ApplyRule[t,Q2[[1]],Superscript["\[And]","-"]];
+				ApplyRule[t,Q2[[2]],Superscript["\[And]","-"]];
 				t["visit"]=Rest[t["visit"]];
 				),
 				
