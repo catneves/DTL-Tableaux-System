@@ -135,83 +135,83 @@ LocSat=Function[{t,cut,delta},
 					d\[NumberSign]=GetQ\[NumberSign][Dk];
 					dX=GetQX[Dk];
 					Which[
-(*All the formulas formulas*)
+(*All the other formulas formulas on the positive side*)
 						FormulaType[delta0]=="Implication",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Implication"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,aux,Union[dminus,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Negation",
 							{i,\[Psi]1}=SubParts[delta0,"Negation"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,aux,Union[dminus,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Conjunction",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Conjunction"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Disjunction",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Disjunction"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Equivalence",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Equivalence"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,aux,Union[dminus,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Globally",
 							{i,\[Psi]1}=SubParts[delta0,"Globally"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([X[G[\[Psi]1]]]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Eventually",
 							{i,\[Psi]1}=SubParts[delta0,"Eventually"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([X[F[\[Psi]1]]]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Until",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Until"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([X[\[Psi]1\ U\ \[Psi]2]]\)\)}],dminus,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
-						FormulaType[delta0]=="Communication",			
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
+						FormulaType[delta0]=="Communication",	
 							{i,j,\[Psi]1}=SubParts[delta0,"Communication"];
 							aux=Complement[dplus,{delta0}];
 							If[
 								MemberQ[dX,j],			
 								StateTuple[Q,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(j\)]\([\[Psi]1]\)\)}],dminus,dbow,d\[NumberSign],dX];
-								If[!ContradictoryQ[Q],push[S,Substitute[D,Dk,Q]]]
+								If[!ContradictoryQ[Q],push[S,{Substitute[D,Dk,Q],D[[2]]}]]
 							]
 					],
 				nonminus,
@@ -220,92 +220,92 @@ LocSat=Function[{t,cut,delta},
 					d\[NumberSign]=GetQ\[NumberSign][Dk];
 					dX=GetQX[Dk];
 					Which[
-					(*alterar isto do i e do j n pode ser assim!!!!*)
+(*All the other formulas formulas on the negative side*)
 						FormulaType[delta0]=="Implication",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Implication"];
 							aux=Complement[dminus,{delta0}];
 							StateTuple[Q,Union[dplus,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Negation",
-							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Negation"];
+							{i,\[Psi]1}=SubParts[delta0,"Negation"];
 							aux=Complement[dminus,{delta0}];
 							StateTuple[Q,Union[dplus,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],aux,dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Conjunction",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Conjunction"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Disjuction",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Disjuction"];
 							aux=Complement[dminus,{delta0}];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Equivalence",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Equivalence"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,Union[dplus,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,Union[dplus,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Conjunction",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Conjunction"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Globally",
 							{i,\[Psi]1}=SubParts[delta0,"Globally"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([X[G[\[Psi]1]]]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Eventually",
 							{i,\[Psi]1}=SubParts[delta0,"Eventually"];
 							aux=Complement[dminus,{delta0}];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([X[F[\[Psi]1]]]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Until",
 							{i,\[Psi]1,\[Psi]2}=SubParts[delta0,"Until"];
 							aux=Complement[dplus,{delta0}];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]1]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]];
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]];
 							StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(i\)]\([\[Psi]2]\)\),\!\(
 \*SubscriptBox[\(@\), \(i\)]\([X[\[Psi]1\ U\ \[Psi]2]]\)\)}],dbow,d\[NumberSign],dX];
-							If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+							If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 						FormulaType[delta0]=="Communication",
 							{i,j,\[Psi]1}=SubParts[delta0,"Communication"];
 							aux=Complement[dminus,{dminus,delta0}];
 							If[MemberQ[dX,j],
 								StateTuple[Q,dplus,Union[aux,{\!\(
 \*SubscriptBox[\(@\), \(j\)]\([\[Psi]1]\)\)}],dbow,d\[NumberSign],dX];
-								If[!ContradictoryQ[Q],push[S,Substitute[D[[1]],Dk,Q]]],
+								If[!ContradictoryQ[Q],push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]],
 								StateTuple[Q,dplus,aux,dbow,d\[NumberSign],dX];
-								push[S,Substitute[D[[1]],Dk,Q]]
+								push[S,{Substitute[D[[1]],Dk,Q],D[[2]]}]
 							]
 					],
 				True,
