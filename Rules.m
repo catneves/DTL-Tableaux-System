@@ -136,57 +136,57 @@ GlobalImplicationMinus=Function[{Q,\[Alpha],\[Beta]},
 
 
 
-(*Global Disjunction Rules, recalling that \[Phi]\[Or]\[Psi] is defined as an abbreviation of (\[Not]\[Phi])\[Implies]\[Psi]*)
-GlobalOrPlus=Function[{Q,\[Phi],\[Psi]},
-(*It presupposes the existence of a disjunction \[Phi]\[Or]\[Psi] in Q+*)
+(*Global Disjunction Rules, recalling that \[Alpha]\[Or]\[Beta] is defined as an abbreviation of (\[Not]\[Alpha])\[Implies]\[Beta]*)
+GlobalOrPlus=Function[{Q,\[Alpha],\[Beta]},
+(*It presupposes the existence of a disjunction \[Alpha]\[Or]\[Beta] in Q+*)
 	Module[{Q1,Q2},
 		StateTuple`Copy[Q,Q1];
 		StateTuple`Copy[Q,Q2];
-		StateTuple`RemoveQplus[Q1,\[Phi]\[Or]\[Psi]];
-		StateTuple`InsertQplus[Q1,\[Phi]];
+		StateTuple`RemoveQplus[Q1,\[Alpha]\[Or]\[Beta]];
+		StateTuple`InsertQplus[Q1,\[Alpha]];
 
-		StateTuple`RemoveQplus[Q2,\[Phi]\[Or]\[Psi]];
-		StateTuple`InsertQplus[Q2,\[Psi]];
+		StateTuple`RemoveQplus[Q2,\[Alpha]\[Or]\[Beta]];
+		StateTuple`InsertQplus[Q2,\[Beta]];
 		{Q1,Q2}
 	]
 ];
 
 
-GlobalOrMinus=Function[{Q,\[Phi],\[Psi]},
-(*It presupposes the existence of a disjunction \[Phi]\[Or]\[Psi] in Q-*)
+GlobalOrMinus=Function[{Q,\[Alpha],\[Beta]},
+(*It presupposes the existence of a disjunction \[Alpha]\[Or]\[Beta] in Q-*)
 	Module[{Q1},
 		StateTuple`Copy[Q,Q1];
-		StateTuple`RemoveQminus[Q1,\[Phi]\[Or]\[Psi]];		
-		StateTuple`InsertQminus[Q1,\[Phi]];
-		StateTuple`InsertQminus[Q1,\[Psi]];
+		StateTuple`RemoveQminus[Q1,\[Alpha]\[Or]\[Beta]];		
+		StateTuple`InsertQminus[Q1,\[Alpha]];
+		StateTuple`InsertQminus[Q1,\[Beta]];
 		Q1
 	]
 ];
 
 
-(*Global Conjunction Rules, recalling that \[Phi]\[And]\[Psi] is defined as an abbreviation of (\[Not](\[Phi]\[Implies](\[Not]\[Psi])))*)
-GlobalAndPlus=Function[{Q,\[Phi],\[Psi]},
-(*It presupposes the existence of a conjunction \[Phi]\[And]\[Psi] in Q+*)
+(*Global Conjunction Rules, recalling that \[Alpha]\[And]\[Beta] is defined as an abbreviation of (\[Not](\[Alpha]\[Implies](\[Not]\[Beta])))*)
+GlobalAndPlus=Function[{Q,\[Alpha],\[Beta]},
+(*It presupposes the existence of a conjunction \[Alpha]\[And]\[Beta] in Q+*)
 	Module[{Q1},
 		StateTuple`Copy[Q,Q1];
-		StateTuple`RemoveQplus[Q1,\[Phi]\[And]\[Psi]];		
-		StateTuple`InsertQplus[Q1,\[Phi]];
-		StateTuple`InsertQplus[Q1,\[Psi]];
+		StateTuple`RemoveQplus[Q1,\[Alpha]\[And]\[Beta]];		
+		StateTuple`InsertQplus[Q1,\[Alpha]];
+		StateTuple`InsertQplus[Q1,\[Beta]];
 		Q1
 	]
 ];
 
 
-GlobalAndMinus=Function[{Q,\[Phi],\[Psi]},
-(*It presupposes the existence of a conjunction \[Phi]\[And]\[Psi] in Q-*)
+GlobalAndMinus=Function[{Q,\[Alpha],\[Beta]},
+(*It presupposes the existence of a conjunction \[Alpha]\[And]\[Beta] in Q-*)
 	Module[{Q1,Q2},
 		StateTuple`Copy[Q,Q1];
 		StateTuple`Copy[Q,Q2];
-		StateTuple`RemoveQminus[Q1,\[Phi]\[And]\[Psi]];
-		StateTuple`InsertQminus[Q1,\[Phi]];
+		StateTuple`RemoveQminus[Q1,\[Alpha]\[And]\[Beta]];
+		StateTuple`InsertQminus[Q1,\[Alpha]];
 
-		StateTuple`RemoveQminus[Q2,\[Phi]\[And]\[Psi]];
-		StateTuple`InsertQminus[Q2,\[Psi]];
+		StateTuple`RemoveQminus[Q2,\[Alpha]\[And]\[Beta]];
+		StateTuple`InsertQminus[Q2,\[Beta]];
 		{Q1,Q2}
 	]
 
@@ -194,24 +194,24 @@ GlobalAndMinus=Function[{Q,\[Phi],\[Psi]},
 
 
 
-(*Global Negation Rules, recalling that \[Not] is defined as an abbreviation of \[Phi]\[Implies]\[UpTee]*)
-GlobalNotPlus=Function[{Q,\[Phi]},
-(*It presupposes the existence of a negation \[Not]\[Phi] in Q+*)
+(*Global Negation Rules, recalling that \[Not] is defined as an abbreviation of \[Alpha]\[Implies]\[UpTee]*)
+GlobalNotPlus=Function[{Q,\[Alpha]},
+(*It presupposes the existence of a negation \[Not]\[Alpha] in Q+*)
 	Module[{Q1},
 		StateTuple`Copy[Q,Q1];
-		StateTuple`RemoveQplus[Q1,\[Not]\[Phi]];		
-		StateTuple`InsertQminus[Q1,\[Phi]];
+		StateTuple`RemoveQplus[Q1,\[Not]\[Alpha]];		
+		StateTuple`InsertQminus[Q1,\[Alpha]];
 		Q1
 	]
 ];
 
 
-GlobalNotMinus=Function[{Q,\[Phi]},
-(*It presupposes the existence of a negation \[Not]\[Phi] in Q-*)
+GlobalNotMinus=Function[{Q,\[Alpha]},
+(*It presupposes the existence of a negation \[Not]\[Alpha] in Q-*)
 	Module[{Q1},
 		StateTuple`Copy[Q,Q1];
-		StateTuple`RemoveQminus[Q1,\[Not]\[Phi]];		
-		StateTuple`InsertQplus[Q1,\[Phi]];
+		StateTuple`RemoveQminus[Q1,\[Not]\[Alpha]];		
+		StateTuple`InsertQplus[Q1,\[Alpha]];
 		Q1
 	]
 ];
